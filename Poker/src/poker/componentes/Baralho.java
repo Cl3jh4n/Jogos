@@ -1,7 +1,7 @@
 /*
     Classe com metodos do baralho, contendo 52 cartas distintas
 */
-package Poker.Componentes;
+package poker.componentes;
 
 public class Baralho {
     

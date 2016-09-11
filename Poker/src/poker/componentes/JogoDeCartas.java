@@ -1,7 +1,7 @@
 /*
     Cria o Jogo de Cartas: Onde o Fluxo Ocorre
  */
-package Poker.Componentes;
+package poker.componentes;
 
 public class JogoDeCartas {
 

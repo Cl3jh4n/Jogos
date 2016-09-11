@@ -1,11 +1,13 @@
 /*
     Classe para criar a interface do jogo Poker
 */
-package Poker.Interface;
+package poker.play;
+
+import poker.componentes.Carta;
 
 
-public class Interface {
+public class Play {
     public static void main(String[] args){
-    
+                ;
     }
 }
