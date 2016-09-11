@@ -1,5 +1,5 @@
 /*
-    Cria o Jogo de Cartas
+    Cria o Jogo de Cartas: Onde o Fluxo Ocorre
  */
 package Poker.Componentes;
 
