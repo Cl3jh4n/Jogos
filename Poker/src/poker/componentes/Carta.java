@@ -2,6 +2,7 @@
     Construtor do Objeto Carta Possui:
         *Um Valor
         *Um Naipe
+    ps:são armazenados como valores inteiros
  */
 package poker.componentes;
 
@@ -11,7 +12,6 @@ public class Carta {
     private char[] VALORES;
     private String[] NAIPES;
 
-    //Construtor apenas para declaração dos valores
     private Carta() {
         VALORES = new char[12];
         VALORES[0] = '2';
@@ -27,34 +27,35 @@ public class Carta {
         VALORES[10] = 'K';
         VALORES[11] = 'A';
 
-        NAIPES = new String[3];
+        NAIPES = new String[4];
         NAIPES[0] = "Espadas";
         NAIPES[1] = "Paus";
         NAIPES[2] = "Copas";
         NAIPES[3] = "Ouro";
-        
+
     }
 
-    Carta(int valor, int naipe) {
-        this(); //instancia a Carta com os atributos...
+    public Carta(int valor, int naipe) { //na vdd é void segundo o uml
+        this();
         this.valor = valor;
         this.naipe = naipe;
     }
 
-    Carta(String valor, String naipe) {
-        this();
+    public Carta(char valor, String naipe) {
+        //definir ainda
     }
 
-    
-    public int getNaipe(int naipe){
+    public int getNaipe(int naipe) {
         return this.naipe;
     }
-    
-    public int getValor(int valor){
+
+    public int getValor(int valor) {
         return this.valor;
     }
-    
-    public String toString(){}
-    
-    public int compararValor(Carta c){}
+
+    public String toString(int valor, int naipe) {
+
+        return String.valueOf(VALORES[this.valor]) + " de " + String.valueOf(NAIPES[this.naipe]);
+
+    }
 }
