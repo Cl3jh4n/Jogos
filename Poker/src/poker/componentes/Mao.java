@@ -5,5 +5,5 @@ package poker.componentes;
 
 
 public class Mao {
-    
+
 }
