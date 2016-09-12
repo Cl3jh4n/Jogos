@@ -8,6 +8,6 @@ import poker.componentes.Carta;
 
 public class Play {
     public static void main(String[] args){
-                ;
+
     }
 }
