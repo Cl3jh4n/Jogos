@@ -3,8 +3,6 @@
  */
 package poker.componentes;
 
-import java.util.Random;
-
 public class Baralho {
 
     private Dado dado;
@@ -20,22 +18,30 @@ public class Baralho {
     /*metodo embaralhar usando random 
     para criar a carta já embaralhada.*/
     public String embaralhar(int Limite) {
-        Random gerador = new Random(Limite);
-        return String.valueOf(gerador.nextInt());
+        int gerador;
+        do {
+            gerador = (int) (Math.random() * Limite);
+            //System.out.println(gerador);
+
+        } while (!(gerador >= 0 && gerador <= Limite));
+        //System.out.println("Passou" + gerador);
+        return String.valueOf(gerador);
+        
     }
 
     /*criar cartas utilizando embaralhar 
     e o construtor de cartas e ir adicionando ao vetor baralho*/
     public int getCarta() {
         Carta carta = new Carta(embaralhar(12), embaralhar(4));
-        if (!(carta.testaCartaDiferente(carta)))  { //adiciona carta ao baralho
+        //System.out.println("Passou" + carta.toString(""));
+        if (carta.testaCartaDiferente(carta)) { //adiciona carta ao baralho
             dado.setTamanhoRealBaralho(dado.getTamanhoRealBaralho() + 1);
             if (dado.getBaralho(this.i) != null) {
                 dado.setBaralho(carta, dado.getTamanhoRealBaralho());
                 System.out.println("entrou");
+                this.i++;
             }
         } else {
-            this.i++;
         }
         return this.i;
     }
@@ -43,8 +49,8 @@ public class Baralho {
     @Override //imprime o Baralho //arrumar isto
     public String toString() {
         String Saida = "";
-        for (Object l : dado.getBaralho(l)) {
-            Saida += "/n" + (l);
+        for (i = 0; i < dado.getTamanhoRealBaralho(); i++) {
+            Saida += "/n" + dado.getBaralho(i);
         }
         return Saida;
     }

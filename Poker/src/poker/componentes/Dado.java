@@ -75,11 +75,11 @@ public class Dado {
         return this.mao[posicao];
     }
 
-    public void setMaos(Carta mao, int posicao) {
+    public void setMaos(Mao mao, int posicao) {
         this.maos[posicao] = mao;
     }
 
-    public Carta getMaos(int posicao) {
+    public Mao getMaos(int posicao) {
         return this.maos[posicao];
     }
 
