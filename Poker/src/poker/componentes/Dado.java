@@ -36,6 +36,7 @@ public class Dado {
         NAIPES[2] = "Copas";
         NAIPES[3] = "Ouro";
 
+        
         baralho = new Carta[48];
         mao = new Carta[8];
         maos = new Mao[2];
