@@ -10,7 +10,7 @@ public class Baralho {
 
     public Baralho() {
         dado = new Dado();
-        for (i = 0; i < 49;) {
+        for (i = 0; i < 48;) {
             getCarta();
         }
     }
@@ -26,7 +26,7 @@ public class Baralho {
         } while (!(gerador >= 0 && gerador <= Limite));
         //System.out.println("Passou" + gerador);
         return String.valueOf(gerador);
-        
+
     }
 
     /*criar cartas utilizando embaralhar 
@@ -34,13 +34,10 @@ public class Baralho {
     public int getCarta() {
         Carta carta = new Carta(embaralhar(12), embaralhar(4));
         //System.out.println("Passou" + carta.toString(""));
-        if (carta.testaCartaDiferente(carta)) { //adiciona carta ao baralho
-            dado.setTamanhoRealBaralho(dado.getTamanhoRealBaralho() + 1);
-            if (dado.getBaralho(this.i) != null) {
-                dado.setBaralho(carta, dado.getTamanhoRealBaralho());
-                System.out.println("entrou");
-                this.i++;
-            }
+        if (carta.testaCartaDiferente(carta)) { //adiciona carta ao baral
+            dado.setBaralho(carta, dado.getTamanhoRealBaralho()+1);
+            System.out.println("entrou");
+            this.i++;
         } else {
         }
         return this.i;
@@ -49,8 +46,9 @@ public class Baralho {
     @Override //imprime o Baralho //arrumar isto
     public String toString() {
         String Saida = "";
-        for (i = 0; i < dado.getTamanhoRealBaralho(); i++) {
-            Saida += "/n" + dado.getBaralho(i);
+        for (i = dado.getTamanhoRealBaralho(); i <= 0 ; i--) {
+            Carta mostra = dado.getBaralho(i);
+            Saida +=(mostra.toString());        //erro a ser descoberto
         }
         return Saida;
     }

@@ -15,12 +15,19 @@ public class Carta {
         dado = new Dado();
     }
 
+    public int getNaipe() {
+        return this.naipe;
+    }
+
+    public int getValor() {
+        return this.valor;
+    }
+
     private void Carta(int valor, int naipe) {
         if (valor >= 0 && valor <= 12 && naipe >= 0 && naipe <= 3) {
             this.valor = valor;
             this.naipe = naipe;
-        }else{
-            System.out.println(toString("Erro ao criar Carta"));
+            System.out.println(valor + " " + naipe);
         }
     }
 
@@ -38,9 +45,17 @@ public class Carta {
     }
 
     public boolean testaCartaDiferente(Carta carta) { //testa as cartas diferentes
-        boolean teste = false;
-        for (int i = 0; i < 48; i++) {
-            teste = carta.equals(dado.getBaralho(i)); //refazer este teste
+        boolean teste = true;
+        int cartaNaipe = carta.getNaipe();
+        int cartaValor = carta.getValor();
+
+        for (int i = 0; i < dado.getTamanhoRealBaralho(); i++) {
+            Carta c = dado.getBaralho(i);
+            if (cartaNaipe == c.getNaipe() && cartaValor == c.getValor()) {
+                teste = false;
+                System.out.println("you shall not pass " + cartaNaipe);
+            }
+
         }
         return teste;
     }
