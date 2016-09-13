@@ -2,6 +2,12 @@
     Construtor do Objeto Carta Possui:
         *Um Valor
         *Um Naipe
+    Metodos:
+        *cartaPossivel-testa se é possivel criar uma carta;
+        *getValor
+        *getNaipe
+        *toString
+        *testaCartaDiferente
  */
 package poker.componentes;
 
@@ -22,10 +28,9 @@ public class Carta {
             System.out.println("Não é possivel criar carta, por favor,"
                     + " verificar valores");
         }
-        //System.out.println(valor + " " + naipe);
     }
 
-    private boolean cartaPossivel(int valor, int naipe) {   //verifica se é possivel criar a carta
+    private boolean cartaPossivel(int valor, int naipe) {   
         return (valor >= 0 && valor <= 11 && naipe >= 0 && naipe <= 3);
     }
 
@@ -42,12 +47,12 @@ public class Carta {
         return dado.getValor(this.valor) + " de " + dado.getNaipe(this.naipe);
     }
 
-    public boolean testaCartaDiferente(Carta carta) { //testa as cartas diferentes
+    public boolean testaCartaDiferente(Carta carta) {
         boolean testeCartaDiferente = true;
         for (int i = 0; i == dado.getTamanhoRealBaralho(); i++) {
             Carta cartaArray = dado.getBaralho(i);
             if (carta.getNaipe() == cartaArray.getNaipe()
-                    && carta.getValor() == cartaArray.getValor()) {     //verifica igualdade
+                    && carta.getValor() == cartaArray.getValor()) { //verifica igualdade
                 testeCartaDiferente = false;
                 System.out.println("you shall not pass " + carta.toString());
                 break;
