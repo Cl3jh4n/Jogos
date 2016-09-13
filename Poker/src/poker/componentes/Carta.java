@@ -25,14 +25,14 @@ public class Carta {
             this.naipe = naipe;
             this.dado = new Dado();
             this.dadoBaralho = new Dado(1);
-            
+
         } else {
             System.out.println("Não é possivel criar carta, por favor,"
                     + " verificar valores");
         }
     }
 
-    private boolean cartaPossivel(int valor, int naipe) {   
+    private boolean cartaPossivel(int valor, int naipe) {
         return (valor >= 0 && valor <= 11 && naipe >= 0 && naipe <= 3);
     }
 
@@ -48,20 +48,5 @@ public class Carta {
     public String toString() {
         return dado.getValor(this.valor) + " de " + dado.getNaipe(this.naipe);
     }
-
-    public boolean testaCartaDiferente(Carta carta) {
-        boolean testeCartaDiferente = true;
-        for (int i = 0; i == dadoBaralho.getTamanhoRealBaralho(); i++) {
-            Carta cartaArray = dadoBaralho.getBaralho(i);
-            if (carta.getNaipe() == cartaArray.getNaipe()
-                    && carta.getValor() == cartaArray.getValor()) { //verifica igualdade
-                testeCartaDiferente = false;
-                System.out.println("you shall not pass " + carta.toString());
-                break;
-            }
-        }
-        return testeCartaDiferente;
-    }
-
 
 }

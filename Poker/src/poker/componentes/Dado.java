@@ -97,6 +97,17 @@ public class Dado {
     public Mao getMaos(int posicao) {
         return this.maos[posicao];
     }
-    
+
+    public boolean testaCartaDiferente(Carta carta) {
+        boolean testeCartaDiferente = true;
+        for (Carta cartaArray : this.baralho) {
+            if (cartaArray == carta) {
+                testeCartaDiferente = false;
+                System.out.println("you shall not pass " + carta.toString());
+                break;
+            }
+        }
+        return testeCartaDiferente;
+    }
 
 }
