@@ -12,6 +12,7 @@ public class Baralho {
 
     private Dado dado;
     private int i;
+    private String saida;
 
     public Baralho() {
         dado = new Dado(1);
@@ -20,40 +21,32 @@ public class Baralho {
         }
     }
 
-    /*metodo embaralhar usando random 
-    para criar a carta já embaralhada.*/
     public int embaralhar(int Limite) {
         int gerador;
         do {
             gerador = (int) (Math.random() * Limite);
-            //System.out.println(gerador);
         } while (!(gerador >= 0 && gerador <= Limite));
-        //System.out.println("Passou" + gerador);
         return gerador;
 
     }
 
-    /*criar cartas utilizando embaralhar 
-    e o construtor de cartas e ir adicionando ao vetor baralho*/
     public int getCarta() {
         Carta carta = new Carta(embaralhar(11), embaralhar(3));
-        //System.out.println("Passou" + carta.toString());
         if (dado.testaCartaDiferente(carta)) { //adiciona carta ao baral
             dado.setBaralho(carta, dado.getTamanhoRealBaralho());
             dado.setTamanhoRealBaralho(dado.getTamanhoRealBaralho() + 1);
-            //System.out.println("passou no teste");
+            if (i != 0) {   //aqui ja manda para ir salvando pro toString
+                saida += (i+1 + " " + carta.toString() + "\n");
+            } else {
+                saida += (1 + " " + carta.toString() + "\n");
+            }
             this.i++;
         }
         return this.i;
     }
 
-    @Override //imprime o Baralho //arrumar isto
+    @Override 
     public String toString() {
-        String Saida = "";
-        for (i = dado.getTamanhoRealBaralho(); i <= 0; i--) {
-            Carta mostra = dado.getBaralho(i);
-            Saida += (mostra.toString() + "\n");        //erro a ser descoberto
-        }
-        return Saida;
+        return saida;
     }
 }
