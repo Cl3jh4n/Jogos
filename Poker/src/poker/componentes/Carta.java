@@ -37,31 +37,23 @@ public class Carta {
         return this.valor;
     }
 
-    public String toString(String aviso) {
-        if ("".equals(aviso)) {
-            aviso = dado.getValor(this.valor) + " de "
-                    + dado.getNaipe(this.naipe);
-        }
-        return aviso;
+    @Override
+    public String toString() {
+        return dado.getValor(this.valor) + " de " + dado.getNaipe(this.naipe);
     }
 
     public boolean testaCartaDiferente(Carta carta) { //testa as cartas diferentes e  testa se é possivel criar
-        boolean teste = false;
-        if (cartaPossivel(carta.getNaipe(), carta.getValor())) {
-            for (int i = 0; i < dado.getTamanhoRealBaralho(); i++) {
-                Carta cartaArray = dado.getBaralho(i);
-                if (carta.getNaipe() == cartaArray.getNaipe()
-                        && carta.getValor() == cartaArray.getValor()) {     //verifica igualdade
-                    teste = false;
-                    System.out.println("you shall not pass " + carta.toString(""));
-                }
-
+        boolean testeCartaDiferente = true;
+        for (int i = 0; i == dado.getTamanhoRealBaralho(); i++) {
+            Carta cartaArray = dado.getBaralho(i);
+            if (carta.getNaipe() == cartaArray.getNaipe()
+                    && carta.getValor() == cartaArray.getValor()) {     //verifica igualdade
+                testeCartaDiferente = false;
+                System.out.println("you shall not pass " + carta.toString());
+                break;
             }
-        } else {
-            teste = false;
         }
-
-        return teste;
+        return testeCartaDiferente;
     }
 
 }
