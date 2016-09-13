@@ -42,7 +42,7 @@ public class Carta {
         return dado.getValor(this.valor) + " de " + dado.getNaipe(this.naipe);
     }
 
-    public boolean testaCartaDiferente(Carta carta) { //testa as cartas diferentes e  testa se é possivel criar
+    public boolean testaCartaDiferente(Carta carta) { //testa as cartas diferentes
         boolean testeCartaDiferente = true;
         for (int i = 0; i == dado.getTamanhoRealBaralho(); i++) {
             Carta cartaArray = dado.getBaralho(i);
@@ -55,5 +55,6 @@ public class Carta {
         }
         return testeCartaDiferente;
     }
+
 
 }
