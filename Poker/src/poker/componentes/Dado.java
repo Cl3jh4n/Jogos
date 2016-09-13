@@ -8,11 +8,11 @@ package poker.componentes;
 
 public class Dado {
 
-    private String[] VALORES;
-    private String[] NAIPES;
-    private Carta[] baralho;
-    private Carta[] mao;
-    private Mao[] maos;
+    private static String[] VALORES;
+    private static String[] NAIPES;
+    private static Carta[] baralho;
+    private static Carta[] mao;
+    private static Mao[] maos;
     private int tamanhorealbaralho;
 
     Dado() {
@@ -35,12 +35,27 @@ public class Dado {
         NAIPES[1] = "Paus";
         NAIPES[2] = "Copas";
         NAIPES[3] = "Ouro";
+    }
 
-        
-        baralho = new Carta[48];
-        mao = new Carta[8];
-        maos = new Mao[2];
-        tamanhorealbaralho = 0;
+    Dado(int escolha) {
+        switch (escolha) {
+            case 1: //apenas para o baralho
+                baralho = new Carta[48];
+                tamanhorealbaralho = 0;
+                break;
+            case 2: //apenas para mao
+                mao = new Carta[8];
+                break;
+            case 3: //apenas para o jogo
+                maos = new Mao[2];
+                break;
+
+            default:
+                baralho = new Carta[48];
+                tamanhorealbaralho = 0;
+                mao = new Carta[8];
+                maos = new Mao[2];
+        }
     }
 
     public String getNaipe(int i) {
@@ -58,7 +73,6 @@ public class Dado {
     public Carta getBaralho(int posicao) {
         return this.baralho[posicao];
     }
-
 
     public void setTamanhoRealBaralho(int tamanhorealbaralho) {
         this.tamanhorealbaralho = tamanhorealbaralho;
@@ -83,5 +97,6 @@ public class Dado {
     public Mao getMaos(int posicao) {
         return this.maos[posicao];
     }
+    
 
 }
