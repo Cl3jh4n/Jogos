@@ -8,11 +8,25 @@ package poker.componentes;
 public class Carta {
 
     private int valor, naipe;
-    private int[] cartas;
     private Dado dado;
 
-    private Carta() {
-        dado = new Dado();
+    public Carta() {
+    }
+
+    public Carta(int valor, int naipe) {
+        if (this.cartaPossivel(valor, naipe)) {
+            this.valor = valor;
+            this.naipe = naipe;
+            this.dado = new Dado();
+        } else {
+            System.out.println("Não é possivel criar carta, por favor,"
+                    + " verificar valores");
+        }
+        //System.out.println(valor + " " + naipe);
+    }
+
+    private boolean cartaPossivel(int valor, int naipe) {   //verifica se é possivel criar a carta
+        return (valor >= 0 && valor <= 11 && naipe >= 0 && naipe <= 3);
     }
 
     public int getNaipe() {
@@ -23,19 +37,6 @@ public class Carta {
         return this.valor;
     }
 
-    private void Carta(int valor, int naipe) {
-        if (valor >= 0 && valor <= 12 && naipe >= 0 && naipe <= 3) {
-            this.valor = valor;
-            this.naipe = naipe;
-            System.out.println(valor + " " + naipe);
-        }
-    }
-
-    public Carta(String valor, String naipe) {
-        this();
-        Carta(Integer.parseInt(valor), Integer.parseInt(naipe));
-    }
-
     public String toString(String aviso) {
         if ("".equals(aviso)) {
             aviso = dado.getValor(this.valor) + " de "
@@ -44,19 +45,23 @@ public class Carta {
         return aviso;
     }
 
-    public boolean testaCartaDiferente(Carta carta) { //testa as cartas diferentes
-        boolean teste = true;
-        int cartaNaipe = carta.getNaipe();
-        int cartaValor = carta.getValor();
+    public boolean testaCartaDiferente(Carta carta) { //testa as cartas diferentes e  testa se é possivel criar
+        boolean teste = false;
+        if (cartaPossivel(carta.getNaipe(), carta.getValor())) {
+            for (int i = 0; i < dado.getTamanhoRealBaralho(); i++) {
+                Carta cartaArray = dado.getBaralho(i);
+                if (carta.getNaipe() == cartaArray.getNaipe()
+                        && carta.getValor() == cartaArray.getValor()) {     //verifica igualdade
+                    teste = false;
+                    System.out.println("you shall not pass " + carta.toString(""));
+                }
 
-        for (int i = 0; i < dado.getTamanhoRealBaralho(); i++) {
-            Carta c = dado.getBaralho(i);
-            if (cartaNaipe == c.getNaipe() && cartaValor == c.getValor()) {
-                teste = false;
-                System.out.println("you shall not pass " + cartaNaipe);
             }
-
+        } else {
+            teste = false;
         }
+
         return teste;
     }
+
 }
