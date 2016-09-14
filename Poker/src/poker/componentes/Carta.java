@@ -14,7 +14,7 @@ package poker.componentes;
 public class Carta {
 
     private int valor, naipe;
-    private Dado dado, dadoBaralho;
+    private Dado dado;
 
     public Carta() {
     }
@@ -24,7 +24,6 @@ public class Carta {
             this.valor = valor;
             this.naipe = naipe;
             this.dado = new Dado();
-            this.dadoBaralho = new Dado(1);
 
         } else {
             System.out.println("Não é possivel criar carta, por favor,"

@@ -4,7 +4,8 @@
     Metodos
         *embaralhar: gera um numero aleatorio para criação da carta
         *getCarta: cria cartas e adiciona ao objeto dado
-        *toString imprime todo o vetor de Baralho
+        *toString: imprime todo o vetor de Baralho
+        *getDado: entrega o objeto dado da classe
  */
 package poker.componentes;
 
@@ -30,7 +31,7 @@ public class Baralho {
 
     }
 
-    public int getCarta() {
+    private int getCarta() {
         Carta carta = new Carta(embaralhar(11), embaralhar(3));
         if (dado.testaCartaDiferente(carta)) { //adiciona carta ao baral
             dado.setBaralho(carta, dado.getTamanhoRealBaralho());
@@ -44,7 +45,11 @@ public class Baralho {
         }
         return this.i;
     }
-
+    
+    public Dado getDado(){
+        return this.dado;
+    }
+    
     @Override 
     public String toString() {
         return saida;
