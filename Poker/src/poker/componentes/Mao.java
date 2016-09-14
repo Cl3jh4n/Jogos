@@ -8,11 +8,12 @@ package poker.componentes;
 
 public class Mao {
 
-    private String saida;
+    private StringBuilder saida;
     private Carta precisa;
     private int i;
 
     public Mao(Baralho baralho, Dado dado) {
+        this.saida = new StringBuilder();
         for (this.i = 0; i < 8; i++) {
             darCarta(i, baralho, dado);
         }
@@ -22,11 +23,11 @@ public class Mao {
         dado = baralho.getDado(dado);
         dado.setMao(dado.getBaralho(baralho.embaralhar(48)), i);
         precisa = dado.getMao(i);
-        this.saida +=(precisa.toString() + "\n");
+        this.saida.append(precisa.toString()).append("\n");
     }
 
     @Override        
     public String toString(){
-        return saida;
+        return this.saida.toString();
     }
 }

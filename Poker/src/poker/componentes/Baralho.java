@@ -12,9 +12,10 @@ package poker.componentes;
 public class Baralho {
 
     private int i;
-    private String saida;
+    private StringBuilder saida;
 
     public Baralho(Dado dado) {
+        this.saida = new StringBuilder();
         for (i = 0; i < 48;) {
             this.getCarta(dado);
         }
@@ -31,25 +32,21 @@ public class Baralho {
 
     private int getCarta(Dado dado) {
         Carta carta = new Carta(embaralhar(11), embaralhar(3), dado);
-        if (dado.testaCartaDiferente(carta)) { //adiciona carta ao baral
+        if (dado.testaCartaDiferente(carta)) { //adiciona carta ao baralho
             dado.setBaralho(carta, dado.getTamanhoRealBaralho());
             dado.setTamanhoRealBaralho(dado.getTamanhoRealBaralho() + 1);
-            if (i != 0) {   //aqui ja manda para ir salvando pro toString
-                saida += (i+1 + " " + carta.toString() + "\n");
-            } else {
-                saida += (1 + " " + carta.toString() + "\n");
-            }
+            saida.append(i + 1).append(": ").append(carta.toString(dado)).append("\n");
             this.i++;
         }
         return this.i;
     }
-    
-    public Dado getDado(Dado dado){
+
+    public Dado getDado(Dado dado) {
         return dado;
     }
-    
-    @Override 
+
+    @Override
     public String toString() {
-        return saida;
+        return this.saida.toString();
     }
 }
