@@ -11,14 +11,12 @@ package poker.componentes;
 
 public class Baralho {
 
-    private Dado dado;
     private int i;
     private String saida;
 
-    public Baralho() {
-        dado = new Dado(1);
+    public Baralho(Dado dado) {
         for (i = 0; i < 48;) {
-            this.getCarta();
+            this.getCarta(dado);
         }
     }
 
@@ -31,8 +29,8 @@ public class Baralho {
 
     }
 
-    private int getCarta() {
-        Carta carta = new Carta(embaralhar(11), embaralhar(3));
+    private int getCarta(Dado dado) {
+        Carta carta = new Carta(embaralhar(11), embaralhar(3), dado);
         if (dado.testaCartaDiferente(carta)) { //adiciona carta ao baral
             dado.setBaralho(carta, dado.getTamanhoRealBaralho());
             dado.setTamanhoRealBaralho(dado.getTamanhoRealBaralho() + 1);
@@ -46,8 +44,8 @@ public class Baralho {
         return this.i;
     }
     
-    public Dado getDado(){
-        return this.dado;
+    public Dado getDado(Dado dado){
+        return dado;
     }
     
     @Override 

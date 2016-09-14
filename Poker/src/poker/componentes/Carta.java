@@ -14,16 +14,14 @@ package poker.componentes;
 public class Carta {
 
     private int valor, naipe;
-    private Dado dado;
 
     public Carta() {
     }
 
-    public Carta(int valor, int naipe) {
+    public Carta(int valor, int naipe, Dado dado) {
         if (this.cartaPossivel(valor, naipe)) {
             this.valor = valor;
             this.naipe = naipe;
-            this.dado = new Dado();
 
         } else {
             System.out.println("Não é possivel criar carta, por favor,"
@@ -43,9 +41,7 @@ public class Carta {
         return this.valor;
     }
 
-    @Override
-    public String toString() {
+    public String toString(Dado dado) {
         return dado.getValor(this.valor) + " de " + dado.getNaipe(this.naipe);
     }
-
 }
