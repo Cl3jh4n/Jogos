@@ -14,19 +14,21 @@ public class Mao {
 
     public Mao(Baralho baralho, Dado dado) {
         this.saida = new StringBuilder();
-        for (this.i = 0; i < 8; i++) {
-            darCarta(i, baralho, dado);
+        for (this.i = 0; i < 8;) {
+            i = darCarta(i, baralho, dado);
         }
     }
 
-    private void darCarta(int i, Baralho baralho, Dado dado) {
+    private int darCarta(int i, Baralho baralho, Dado dado) {//corrigir bug
         int a = baralho.embaralhar(48);
         if (dado.getBaralho(a) != null) {   //se tiver null no array baralho é porque a carta ja foi selecionada
             dado.setMao(dado.getBaralho(a), i);
             dado.setBaralho(null, i);
             precisa = dado.getMao(i);
             this.saida.append(precisa.toString(dado)).append("\n");
+            i+=1;
         }
+        return i;
     }
 
     @Override
