@@ -30,19 +30,25 @@ public class Baralho {
 
     }
 
-    private int getCarta(Dado dado) {
-        Carta carta = new Carta(embaralhar(11), embaralhar(3), dado);
-        if (dado.testaCartaDiferente(carta)) { //adiciona carta ao baralho
-            dado.setBaralho(carta, dado.getTamanhoRealBaralho());
-            dado.setTamanhoRealBaralho(dado.getTamanhoRealBaralho() + 1);
-            saida.append(i + 1).append(": ").append(carta.toString(dado)).append("\n");
+    private int getCarta(Dado dado) { //corrigir isto
+        Carta carta = new Carta(embaralhar(110), embaralhar(30), dado);
+        if (this.i > 0) {
+            if (dado.testaCartaDiferente(carta)) { //adiciona carta ao baralho
+                dado.setBaralho(carta, this.i);
+                dado.setTamanhoRealBaralho(i);
+                saida.append(this.i + 1).append(": ").append(carta.toString(dado)).append("\n");
+                //System.out.println("passou");
+                this.i++;
+            }
+        } else {
+            dado.setBaralho(carta, this.i);
+            dado.setTamanhoRealBaralho(i);
+            saida.append(this.i + 1).append(": ").append(carta.toString(dado)).append("\n");
+            //System.out.println("else");
             this.i++;
+
         }
         return this.i;
-    }
-
-    public Dado getDado(Dado dado) {
-        return dado;
     }
 
     @Override

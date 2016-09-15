@@ -20,14 +20,17 @@ public class Mao {
     }
 
     private void darCarta(int i, Baralho baralho, Dado dado) {
-        dado = baralho.getDado(dado);
-        dado.setMao(dado.getBaralho(baralho.embaralhar(48)), i);
-        precisa = dado.getMao(i);
-        this.saida.append(precisa.toString()).append("\n");
+        int a = baralho.embaralhar(48);
+        if (dado.getBaralho(a) != null) {   //se tiver null no array baralho é porque a carta ja foi selecionada
+            dado.setMao(dado.getBaralho(a), i);
+            dado.setBaralho(null, i);
+            precisa = dado.getMao(i);
+            this.saida.append(precisa.toString(dado)).append("\n");
+        }
     }
 
-    @Override        
-    public String toString(){
+    @Override
+    public String toString() {
         return this.saida.toString();
     }
 }

@@ -25,7 +25,8 @@ public class JogoDeCartas {
     }
 
     public void play() {
-        System.out.println(this.baralho.toString());
+        System.out.println(this.mao.toString());
+        System.out.println(this.mao2.toString());
     }
 
 

@@ -23,10 +23,10 @@ public class Carta {
             this.valor = valor;
             this.naipe = naipe;
 
-        } else {
+        } /*else {
             System.out.println("Não é possivel criar carta, por favor,"
                     + " verificar valores");
-        }
+        }*/
     }
 
     private boolean cartaPossivel(int valor, int naipe) {
@@ -39,6 +39,12 @@ public class Carta {
 
     public int getValor() {
         return this.valor;
+    }
+    
+    @Override
+    public boolean equals(Object carta) {
+        return (this.valor == ((Carta) carta).getValor())
+                && (this.naipe == ((Carta) carta).getNaipe());
     }
 
     public String toString(Dado dado) {
