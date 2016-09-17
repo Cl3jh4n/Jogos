@@ -21,7 +21,7 @@ public class Mao {
         for (this.i = 0; i < 8;) {
             i = darCarta(i, baralho, dado);
         }
-        
+        mao.add(null);
     }
 
     private int darCarta(int i, Baralho baralho, Dado dado) {

@@ -13,10 +13,10 @@ package poker.componentes;
 public class JogoDeCartas {
 
     private Dado dado;
-    private Carta cartaAtual, cartaMaior;
+    private Carta cartaA, cartaB;
     private Baralho baralho;
     private Mao mao, mao2;
-    private int maiorPar, maiorCarta;
+    private int anterior;
 
     public JogoDeCartas() {
         this.dado = new Dado();
@@ -33,32 +33,37 @@ public class JogoDeCartas {
                 + this.mao2.toString());
 
         if (maiorPar(this.mao) > maiorPar(this.mao2)) {
-            this.maiorPar = maiorPar(this.mao);
             System.out.println("Primeira Mao ganhou");
         } else if (maiorPar(this.mao) < maiorPar(this.mao2)) {
-            this.maiorPar = maiorPar(this.mao2);
             System.out.println("Segunda Mao ganhou");
         } else if (maiorCarta(this.mao) > maiorCarta(this.mao2)) {
-            this.maiorCarta = maiorCarta(this.mao);
             System.out.println("Primeira Mao ganhou");
         } else {
-            this.maiorCarta = maiorCarta(this.mao2);
             System.out.println("Segunda Mao ganhou");
         }
     }
-    
+
     //verifica o maior par de cada mão
     public int maiorPar(Mao mao) {//corrigrir esta
-        for (int i = 0; i < 8; i++) {
-            if (mao.mao.get(i).getValor() == mao.mao.get(i + 1).getValor()
-                    && this.maiorPar < mao.mao.get(i).getValor()) {
-                this.maiorPar = mao.mao.get(i).getValor();
+        int maiorPar = 0;
+        for (int x = 11; x >= 0; x--) {
+            int quantidade = 0;
+            for (int i = 0; i < 8; i++) {
+                if (mao.mao.get(i).getValor() == x) {
+                    quantidade += 1;
+                }
+            }
+            if (quantidade >= 2) {
+                maiorPar = x;
+                break;
             }
         }
         return maiorPar;
     }
+
     //verifica a maior carta de cada mao
     public int maiorCarta(Mao mao) {
+        int maiorCarta = 0;
         for (int i = 8; i > 0; i--) {
             if (mao.mao.get(i).getValor() > maiorCarta) {
                 maiorCarta = mao.mao.get(i).getValor();

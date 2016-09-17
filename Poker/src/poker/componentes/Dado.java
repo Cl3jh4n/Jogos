@@ -10,7 +10,7 @@ public class Dado {
 
     private static String[] VALORES;
     private static String[] NAIPES;
-    private static Carta[] baralho;
+    private Carta[] baralho;
     private int tamanhorealbaralho;
 
     Dado() {
