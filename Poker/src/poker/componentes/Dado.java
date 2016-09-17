@@ -11,7 +11,6 @@ public class Dado {
     private static String[] VALORES;
     private static String[] NAIPES;
     private static Carta[] baralho;
-    private static Carta[] mao;
     private int tamanhorealbaralho;
 
     Dado() {
@@ -37,7 +36,7 @@ public class Dado {
 
         baralho = new Carta[48];
         tamanhorealbaralho = 0;
-        mao = new Carta[8];
+        
     }
 
     public String getNaipe(int i) {
@@ -62,14 +61,6 @@ public class Dado {
 
     public int getTamanhoRealBaralho() {
         return this.tamanhorealbaralho;
-    }
-
-    public void setMao(Carta c, int posicao) {
-        this.mao[posicao] = c;
-    }
-
-    public Carta getMao(int posicao) {
-        return this.mao[posicao];
     }
 
     public boolean testaCartaDiferente(Carta carta) {

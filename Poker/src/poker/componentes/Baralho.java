@@ -16,6 +16,7 @@ public class Baralho {
 
     public Baralho(Dado dado) {
         this.saida = new StringBuilder();
+        System.out.println("Embaralhando...");
         for (i = 0; i < 48;) {
             this.getCarta(dado);
         }

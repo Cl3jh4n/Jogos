@@ -16,6 +16,7 @@ public class JogoDeCartas {
     private Carta cartaAtual, cartaMaior;
     private Baralho baralho;
     private Mao mao, mao2;
+    private int maiorPar, maiorCarta;
 
     public JogoDeCartas() {
         this.dado = new Dado();
@@ -25,44 +26,49 @@ public class JogoDeCartas {
     }
 
     public void play() {
-        System.out.println(this.baralho.toString() + "\n");
-        System.out.println(this.mao.toString());
-        System.out.println(this.mao2.toString());
+        System.out.println("Distribuindo as cartas...");
+        System.out.println("~~~~~~~~~~~Primeira mao~~~~~~~~~~~~~~~\n"
+                + this.mao.toString());
+        System.out.println("~~~~~~~~~~~Segunda mao~~~~~~~~~~~~~~~\n"
+                + this.mao2.toString());
+
+        if (maiorPar(this.mao) > maiorPar(this.mao2)) {
+            this.maiorPar = maiorPar(this.mao);
+            System.out.println("Primeira Mao ganhou");
+        } else if (maiorPar(this.mao) < maiorPar(this.mao2)) {
+            this.maiorPar = maiorPar(this.mao2);
+            System.out.println("Segunda Mao ganhou");
+        } else if (maiorCarta(this.mao) > maiorCarta(this.mao2)) {
+            this.maiorCarta = maiorCarta(this.mao);
+            System.out.println("Primeira Mao ganhou");
+        } else {
+            this.maiorCarta = maiorCarta(this.mao2);
+            System.out.println("Segunda Mao ganhou");
+        }
+    }
+    
+    //verifica o maior par de cada mão
+    public int maiorPar(Mao mao) {//corrigrir esta
+        for (int i = 0; i < 8; i++) {
+            if (mao.mao.get(i).getValor() == mao.mao.get(i + 1).getValor()
+                    && this.maiorPar < mao.mao.get(i).getValor()) {
+                this.maiorPar = mao.mao.get(i).getValor();
+            }
+        }
+        return maiorPar;
+    }
+    //verifica a maior carta de cada mao
+    public int maiorCarta(Mao mao) {
+        for (int i = 8; i > 0; i--) {
+            if (mao.mao.get(i).getValor() > maiorCarta) {
+                maiorCarta = mao.mao.get(i).getValor();
+            }
+        }
+        return maiorCarta;
     }
 
-
-/*public static class Regras {
-
-        Regras(int valor, int naipe, Dado dado) {
-            //cartaAtual = new Carta(valor, naipe, dado);
-            //cartaMaior = new Carta(valor, naipe, dado);
-        }
-
-        public Carta maiorPar(Carta carta, Carta carta) {
-            for (int i = 0; i <= 8; i++) {
-            if (i > 0) {
-                cartaAtual = dado.getMao(i);
-            } else {
-                cartaMaior = dado.getMao(i);
-            }
-            maiorCarta(cartaAtual, cartaMaior);
-
-            return
-        }
-
-        private Carta maiorCarta(Carta cartaAtual, Carta cartaMaior) {
-            if (cartaAtual.getValor() > cartaMaior.getValor()) {
-
-                cartaMaior = cartaAtual;
-
-            } else if ((cartaAtual.getValor() == cartaMaior.getValor())
-                    && (cartaAtual.getNaipe() > cartaMaior.getNaipe())) {
-
-                cartaMaior = cartaAtual;
-
-            }
-            return cartaMaior;
-        }
-
-    }*/
+    public static void main(String[] args) {
+        JogoDeCartas poker = new JogoDeCartas();
+        poker.play();
+    }
 }
