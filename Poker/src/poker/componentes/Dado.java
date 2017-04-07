@@ -66,7 +66,6 @@ public class Dado {
     public boolean testaCartaDiferente(Carta carta) {
         for (int i = 0; i <= this.tamanhorealbaralho; i++) {
             if (carta.equals(this.baralho[i])) {
-                //System.out.println("you shall not pass: " + carta.toString(this));
                 return false;
             }
         }
